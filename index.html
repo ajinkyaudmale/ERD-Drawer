@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Diagram Canvas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Diagram Canvas</h1>
+      <select id="diagramType">
+        <option value="er">ER Diagram</option>
+        <option value="usecase">Use Case</option>
+        <option value="class">Class</option>
+        <option value="object">Object</option>
+        <option value="sequence">Sequence</option>
+        <option value="activity">Activity</option>
+      </select>
+      <button id="undoAction">Undo</button>
+      <button id="clearCanvas">Clear</button>
+      <button id="downloadPng">Download PNG</button>
+    </header>
+
+    <main class="app-main">
+      <aside class="toolbar">
+        <h2>Tools</h2>
+        <div id="toolButtons" class="tool-buttons">
+          <!-- Filled dynamically based on diagram type -->
+        </div>
+        <div id="erdGenerator" class="erd-generator">
+          <h3>ERD Generator (Text)</h3>
+          <p class="erd-help">
+            Option 1 – paste a quick text spec and generate a clean ER diagram.
+          </p>
+          <textarea id="erdSpec" spellcheck="false" placeholder="Entity Student
+  *stud_id
+  name
+  email
+  gender
+
+Entity Form
+  *form_id
+  percentage
+  study_hours
+
+Relationship fills Student.M Form.1"></textarea>
+          <button id="generateErd">Generate ERD</button>
+        </div>
+        <div id="erdFormBuilder" class="erd-form-builder">
+          <h3>ERD Generator (Form)</h3>
+          <p class="erd-help">
+            Option 2 – add entities, attributes and relationships using forms.
+          </p>
+          <div class="erd-form-section">
+            <h4>Entities</h4>
+            <label class="erd-label">Entity name</label>
+            <input id="erdEntityName" class="erd-input" placeholder="Student" />
+            <label class="erd-label">Attributes (comma separated, * before PK)</label>
+            <input id="erdEntityAttributes" class="erd-input" placeholder="*stud_id, name, email, gender" />
+            <button id="erdAddEntity" class="erd-small-button">Add Entity</button>
+            <ul id="erdEntityList" class="erd-list"></ul>
+          </div>
+          <div class="erd-form-section">
+            <h4>Relationships</h4>
+            <label class="erd-label">Relationship name</label>
+            <input id="erdRelName" class="erd-input" placeholder="fills" />
+            <div class="erd-rel-row">
+              <div>
+                <label class="erd-label">From entity</label>
+                <select id="erdRelEntity1" class="erd-input"></select>
+                <select id="erdRelCard1" class="erd-input">
+                  <option value="1">1</option>
+                  <option value="M">M</option>
+                </select>
+              </div>
+              <div>
+                <label class="erd-label">To entity</label>
+                <select id="erdRelEntity2" class="erd-input"></select>
+                <select id="erdRelCard2" class="erd-input">
+                  <option value="1">1</option>
+                  <option value="M">M</option>
+                </select>
+              </div>
+            </div>
+            <button id="erdAddRelationship" class="erd-small-button">
+              Add Relationship
+            </button>
+            <ul id="erdRelationshipList" class="erd-list"></ul>
+          </div>
+          <button id="generateErdFromForm">Generate ERD from Form</button>
+        </div>
+        <div class="hint">
+          <h3>Hint</h3>
+          <p id="hintText"></p>
+        </div>
+      </aside>
+
+      <section class="canvas-wrapper">
+        <canvas id="canvas" width="1200" height="700"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
