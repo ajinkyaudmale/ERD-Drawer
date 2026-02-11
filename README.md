@@ -66,20 +66,12 @@ Relationship Enrollment
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - Built with HTML5 Canvas and vanilla JavaScript
 - Inspired by professional database design tools
 - Special thanks to all contributors
 
-## Screenshot
-
-![ERD Drawer Screenshot](screenshot.png)
-
 ---
 
-Created with ❤️ by [Your Name]
+Created with ❤️ by [Ajinkya Udmale]
